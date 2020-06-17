@@ -86,5 +86,4 @@ def main():
         validation_augmentation=validation_augmentation)
 
 if __name__ == "__main__":
-    import speedtest
-    #main()
+    main()
