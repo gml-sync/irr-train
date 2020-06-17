@@ -14,7 +14,8 @@ print("cwd:", path)
 sintel_root = Path.cwd().parent.parent.parent
 
 begin = time()
-for x in sorted(path.rglob('*.png')):
+print('Images:', len(sorted(path.rglob('*.png'))))
+for x in sorted(path.rglob('*.png'))[:60]:
     #img1 = io.imread(x)[:10, :10]
     img2 = lycon.load(str(x))
     h, w = img2.shape[:2]
@@ -23,7 +24,7 @@ for x in sorted(path.rglob('*.png')):
 print('Lycon spent {:.4f}'.format(time() - begin))
 
 begin = time()
-for x in sorted(path.rglob('*.png')):
+for x in sorted(path.rglob('*.png'))[:60]:
     img1 = io.imread(x)
     h, w = img1.shape[:2]
     resized = skimage.transform.resize(img1, (h // 2, w // 2))
