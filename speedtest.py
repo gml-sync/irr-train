@@ -11,7 +11,7 @@ print("cwd:", path)
 
 for x in sorted(path.rglob('*.png'))[:1]:
     img = io.imread(x)
-    io.imwrite(root / 'a.jpg', img)
+    io.imsave(root / 'a.jpg', img)
 
 begin = time()
 
