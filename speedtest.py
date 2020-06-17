@@ -11,9 +11,11 @@ print("cwd:", path)
 begin = time()
 
 sintel_root = Path.cwd().parent.parent.parent
-for x in sorted(path.rglob('*.png'))[:10]:
-    img = io.imread(x)
-    #img = lycon.load(str(x))
+for x in sorted(path.rglob('*.png'))[:2]:
+    img1 = io.imread(x)[:10, :10]
+    img2 = lycon.load(str(x))[:10, :10]
+    print(img1.dtype, img2.dtype)
+    print(img1 - img2)
 
     #print(x.relative_to(sintel_root))
 
