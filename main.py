@@ -86,5 +86,5 @@ def main():
         validation_augmentation=validation_augmentation)
 
 if __name__ == "__main__":
-    print("Hello world!")
+    print("Hello world:)")
     main()
