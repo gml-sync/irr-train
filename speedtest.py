@@ -21,7 +21,7 @@ print('Lycon spent {:.4f}'.format(time() - begin))
 
 begin = time()
 for x in sorted(path.rglob('*.png')):
-    img1 = io.imread(x)[:10, :10]
+    img1 = io.imread(x)
     #img2 = lycon.load(str(x))
 
 print('Skimage spent {:.4f}'.format(time() - begin))
