@@ -1,5 +1,5 @@
 from pathlib import Path
-import skimage
+import skimage.transform
 from skimage import io
 from time import time
 import lycon
