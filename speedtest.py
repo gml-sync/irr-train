@@ -6,7 +6,12 @@ import lycon
 
 print("Hello!")
 path = Path.cwd().parent.parent.parent / 'sintelall/MPI-Sintel-complete/training/clean'
+root = Path.cwd().parent.parent.parent
 print("cwd:", path)
+
+for x in sorted(path.rglob('*.png'))[:1]:
+    img = io.imread(x)
+    io.imwrite(root / 'a.jpg', img)
 
 begin = time()
 
