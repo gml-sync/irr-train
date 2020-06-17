@@ -1,5 +1,5 @@
-import os
+from pathlib import Path
 
 print("Hello!")
-path = os.getcwd()
+path = Path.cwd()
 print("cwd:", path)
