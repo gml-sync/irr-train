@@ -10,22 +10,18 @@ path = Path.cwd().parent.parent.parent / 'sintelall/MPI-Sintel-complete/training
 root = Path.cwd().parent.parent.parent
 print("cwd:", path)
 
-for x in sorted(path.rglob('*.png'))[:1]:
-    img = io.imread(x)
-    io.imsave(root / 'a.jpg', img)
-
-img1 = io.imread(root / 'a.jpg')
-img2 = lycon.load(str(root / 'a.jpg'))
-print(img1.dtype, img2.dtype)
-print(np.sum(np.abs(img1 - img2)))
+sintel_root = Path.cwd().parent.parent.parent
 
 begin = time()
-
-sintel_root = Path.cwd().parent.parent.parent
-for x in sorted(path.rglob('*.png'))[:2]:
+for x in sorted(path.rglob('*.png')):
     #img1 = io.imread(x)[:10, :10]
-    img2 = lycon.load(str(x))[:10, :10]
+    img2 = lycon.load(str(x))
 
-    #print(x.relative_to(sintel_root))
+print('Lycon spent {:.4f}'.format(time() - begin))
 
-print('Spent {:.4f}'.format(time() - begin))
+begin = time()
+for x in sorted(path.rglob('*.png')):
+    img1 = io.imread(x)[:10, :10]
+    #img2 = lycon.load(str(x))
+
+print('Skimage spent {:.4f}'.format(time() - begin))
