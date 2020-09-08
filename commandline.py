@@ -201,7 +201,7 @@ def _parse_arguments():
     add("--save_result_path_name", default="", type=str)
     add("--save_result_img", type=tools.str2bool, default=False)
     add("--save_result_occ", type=tools.str2bool, default=False)
-    add("--save_result_flo", type=tools.str2bool, default=False)
+    add("--save_result_flo", type=tools.str2bool, default=True)
     add("--save_result_png", type=tools.str2bool, default=False)
     add("--save_result_bidirection", type=tools.str2bool, default=False)
     add("--num_iters", type=int, default=1)
