@@ -23,7 +23,7 @@ python ../../main.py \
 --model=$MODEL \
 --num_workers=4 \
 --save=$SAVE_PATH \
---validation_dataset=SintelTrainingFinalValid  \
+--validation_dataset=SintelTrainingFinalFull  \
 --validation_dataset_photometric_augmentations=False \
 --validation_dataset_root=$SINTEL_HOME \
 --validation_key=epe \
