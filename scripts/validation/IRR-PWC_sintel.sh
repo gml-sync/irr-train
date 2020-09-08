@@ -4,7 +4,7 @@
 EXPERIMENTS_HOME="saved_check_point/pwcnet"
 
 # datasets
-SINTEL_HOME=$FAKEROOT/irr-root/sintelall/MPI-Sintel-complete/
+SINTEL_HOME=$TRAINHOME/sintelall/MPI-Sintel-complete
 
 # model and checkpoint
 MODEL=IRR_PWC
