@@ -1,5 +1,5 @@
 #!/bin/bash
-
+pwd
 # experiments and datasets meta
 EXPERIMENTS_HOME="saved_check_point/pwcnet"
 
