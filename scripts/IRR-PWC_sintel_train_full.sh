@@ -9,7 +9,7 @@ SINTEL_HOME=$TRAINHOME/sintelall/MPI-Sintel-complete/
 # model and checkpoint
 MODEL=IRR_PWC
 EVAL_LOSS=MultiScaleEPE_PWC_Bi_Occ_upsample_Sintel
-CHECKPOINT="saved_check_point/IRR-PWC_things3d/checkpoint_latest.ckpt"
+CHECKPOINT="saved_check_point/pwcnet/IRR-PWC_things3d/checkpoint_latest.ckpt"
 SIZE_OF_BATCH=4
 
 # save path
