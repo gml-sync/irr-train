@@ -119,6 +119,8 @@ class TrainingEpoch:
                  loader,
                  optimizer,
                  augmentation=None,
+                 checkpoint_saver=None,
+                 checkpoint_args=None,
                  add_progress_stats={},
                  desc="Training Epoch"):
 
@@ -128,6 +130,8 @@ class TrainingEpoch:
         self._model_and_loss = model_and_loss
         self._optimizer = optimizer
         self._augmentation = augmentation
+        self._checkpoint_saver = checkpoint_saver
+        self._checkpoint_args = checkpoint_args
         self._add_progress_stats = add_progress_stats
 
     def _step(self, example_dict):
@@ -223,6 +227,7 @@ class TrainingEpoch:
         # Perform training steps
         # ---------------------------------------
         with create_progressbar(**progressbar_args) as progress:
+            save_timer = time()
             for example_dict in progress:
                 # perform step
                 loss_dict_per_step, output_dict, batch_size = self._step(example_dict)
@@ -249,6 +254,14 @@ class TrainingEpoch:
                     moving_averages_postfix="_ema")
 
                 progress.set_postfix(progress_stats)
+
+                # Save state each 10 seconds
+                cur_time = time()
+                if cur_time - save_timer > 10:
+                    save_timer = cur_time
+                    if self._checkpoint_saver is not None and self._checkpoint_args is not None:
+                        self._checkpoint_saver.save_latest(**self._checkpoint_args)
+
 
         # -------------------------------------------------------------
         # Return loss and output dictionary
@@ -549,7 +562,15 @@ def exec_runtime(args,
                     model_and_loss=model_and_loss,
                     optimizer=optimizer,
                     loader=train_loader,
-                    augmentation=training_augmentation).run()
+                    augmentation=training_augmentation,
+                    checkpoint_saver=checkpoint_saver,
+                    checkpoint_args={
+                        'directory': args.save,
+                        'model_and_loss': model_and_loss,
+                        'stats_dict': dict({'epe': 0, 'F1': 0}, epoch=epoch),
+                        'store_as_best': False
+                    }
+                ).run()
 
             # -------------------------------------------
             # Create and run a validation epoch
@@ -582,8 +603,7 @@ def exec_runtime(args,
                 # ----------------------------------------------------------------
                 if lr_scheduler is not None and validation_scheduler:
                     lr_scheduler.step(validation_loss, epoch=epoch)
-            with open('avg_loss_dict.pickle', 'wb') as obj_file:
-                pickle.dump(avg_loss_dict, obj_file)
+
             # ----------------------------------------------------------------
             # Also show best loss on total_progress
             # ----------------------------------------------------------------
