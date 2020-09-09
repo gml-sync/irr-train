@@ -15,7 +15,7 @@ import torch
 import torch.nn as nn
 import os
 
-import myimport
+from myimport import *
 
 # for evaluation
 from utils.flow import flow_to_png, flow_to_png_middlebury
