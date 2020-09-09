@@ -15,6 +15,8 @@ import torch
 import torch.nn as nn
 import os
 
+import myimport
+
 # for evaluation
 from utils.flow import flow_to_png, flow_to_png_middlebury
 from utils.flow import write_flow, write_flow_png
@@ -580,7 +582,8 @@ def exec_runtime(args,
                 # ----------------------------------------------------------------
                 if lr_scheduler is not None and validation_scheduler:
                     lr_scheduler.step(validation_loss, epoch=epoch)
-
+            with open('avg_loss_dict.pickle', 'wb') as obj_file:
+                pickle.dump(avg_loss_dict, obj_file)
             # ----------------------------------------------------------------
             # Also show best loss on total_progress
             # ----------------------------------------------------------------
