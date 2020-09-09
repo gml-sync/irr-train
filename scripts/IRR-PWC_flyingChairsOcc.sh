@@ -14,7 +14,7 @@ SIZE_OF_BATCH=4
 
 # save path
 TIME=$(date +"%Y%m%d-%H%M%S")
-SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-$TIME"
+SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-v1"
 
 # training configuration
 python ../main.py \
