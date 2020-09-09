@@ -4,7 +4,7 @@
 EXPERIMENTS_HOME="experiments"
 
 # datasets
-FLYINGCHAIRS_OCC_HOME=(YOUR PATH)/flow_occ_v5/data
+FLYINGCHAIRS_OCC_HOME="$CONDA/datasets/irrpwc/1.Chairs/FlyingChairsOcc/data"
 
 # model and checkpoint
 MODEL=IRR_PWC
@@ -14,7 +14,7 @@ SIZE_OF_BATCH=4
 
 # save path
 TIME=$(date +"%Y%m%d-%H%M%S")
-SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-$TIME"
+SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-$TIME"
 
 # training configuration
 python ../main.py \
