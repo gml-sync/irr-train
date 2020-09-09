@@ -4,7 +4,7 @@
 EXPERIMENTS_HOME="experiments"
 
 # datasets
-SINTEL_HOME=(YOUR PATH)/MPI-Sintel-complete/
+SINTEL_HOME=$TRAINHOME/sintelall/MPI-Sintel-complete/
 
 # model and checkpoint
 MODEL=IRR_PWC
