@@ -46,11 +46,8 @@ def main():
 
     # Multi-GPU automation
     with logger.LoggingBlock("Multi GPU", emph=True):
-        if torch.cuda.device_count() > 1:
-            logging.info("Let's use %d GPUs!" % torch.cuda.device_count())
-            model_and_loss._model = torch.nn.DataParallel(model_and_loss._model)
-        else:
-            logging.info("Let's use %d GPU!" % torch.cuda.device_count())
+        logging.info("Let's use %d GPUs!" % torch.cuda.device_count())
+        model_and_loss._model = torch.nn.DataParallel(model_and_loss._model)
 
 
     # Configure optimizer
