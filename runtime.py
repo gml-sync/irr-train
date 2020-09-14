@@ -233,6 +233,7 @@ class TrainingEpoch:
                 loss_dict_per_step, output_dict, batch_size = self._step(example_dict)
                 # convert
                 loss_dict_per_step = tensor2float_dict(loss_dict_per_step)
+                logging.info('losses ' + str(loss_dict_per_step))
 
                 # --------------------------------------------------------
                 # Possibly initialize moving averages
@@ -504,7 +505,6 @@ def exec_runtime(args,
     # --------------------------------------------------------
     # Log some runtime info
     # --------------------------------------------------------
-    logging.info("Hello?:))))")
     with logger.LoggingBlock("Runtime", emph=True):
         logging.info("start_epoch: %i" % args.start_epoch)
         logging.info("total_epochs: %i" % args.total_epochs)
