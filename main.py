@@ -35,6 +35,11 @@ def main():
     # Configure model and loss
     model_and_loss = config.configure_model_and_loss(args)
 
+    # Multi-GPU automation
+    with logger.LoggingBlock("Multi GPU", emph=True):
+        logging.info("Let's use %d GPUs!" % torch.cuda.device_count())
+        model_and_loss._model = torch.nn.DataParallel(model_and_loss._model)
+
     # Resume from checkpoint if available
     checkpoint_saver, checkpoint_stats = config.configure_checkpoint_saver(args, model_and_loss)
 
@@ -43,12 +48,6 @@ def main():
         logging.info("Save directory: %s" % args.save)
         if not os.path.exists(args.save):
             os.makedirs(args.save)
-
-    # Multi-GPU automation
-    with logger.LoggingBlock("Multi GPU", emph=True):
-        logging.info("Let's use %d GPUs!" % torch.cuda.device_count())
-        model_and_loss._model = torch.nn.DataParallel(model_and_loss._model)
-
 
     # Configure optimizer
     optimizer = config.configure_optimizer(args, model_and_loss)
