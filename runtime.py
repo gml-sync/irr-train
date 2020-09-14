@@ -504,6 +504,8 @@ def exec_runtime(args,
     # --------------------------------------------------------
     # Log some runtime info
     # --------------------------------------------------------
+    with logger.LoggingBlock("Eheheheheh", emph=True):
+        logging.info("start_lol: %i" % 1150)
     with logger.LoggingBlock("Runtime", emph=True):
         logging.info("start_epoch: %i" % args.start_epoch)
         logging.info("total_epochs: %i" % args.total_epochs)
