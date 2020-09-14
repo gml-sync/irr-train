@@ -236,8 +236,8 @@ class TrainingEpoch:
 
                 # log the losses
                 log_str = ''
-                for key in loss_dict_per_step:
-                    log_str += key + ': ' + "{:.3f}".format(key) + ' '
+                for key, val in loss_dict_per_step.items():
+                    log_str += key + ': ' + "{:.3f}".format(val) + ' '
                 logging.info('losses ' + log_str)
 
                 # --------------------------------------------------------
