@@ -207,7 +207,7 @@ class CheckpointSaver:
     # initialize parameters in modules without knowing the dimensions at runtime
     #
     # This function here will resize these parameters to whatever size required.
-    
+
     def _load_state_dict_into_module(self, state_dict, module, strict=True):
         own_state = module.state_dict()
 
@@ -324,6 +324,7 @@ def configure_checkpoint_saver(args, model_and_loss):
             logging.info("Starting from scratch with random initialization.")
 
         elif os.path.isfile(args.checkpoint):
+            logging.info("Loading checkpoint file %s" % args.checkpoint)
             checkpoint_stats, filename = checkpoint_saver.restore(
                 filename=args.checkpoint,
                 model_and_loss=model_and_loss,
