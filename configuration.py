@@ -240,10 +240,18 @@ class CheckpointSaver:
             logging.info("Could not find checkpoint file '%s'!" % filename)
             quit()
 
+        # check which file version is latest
+        no_extension = filename.split('.')[0]
+        statistics_filename = no_extension + ".json"
+        statistics = tools.read_json(statistics_filename)
+
         # -----------------------------------------------------------------------------------------
         # Load checkpoint from file including the state_dict
         # -----------------------------------------------------------------------------------------
-        checkpoint_with_state = torch.load(filename)
+        if statistics['shadow']:
+            checkpoint_with_state = torch.load(no_extension + '_shadow' + '.ckpt')
+        else:
+            checkpoint_with_state = torch.load(filename)
 
         # -----------------------------------------------------------------------------------------
         # Load filtered state dictionary
@@ -284,17 +292,25 @@ class CheckpointSaver:
         # -----------------------------------------------------------------------------------------
         tools.ensure_dir(directory)
 
+        # check previous latest file version
+        latest_statistics_filename = os.path.join(
+            directory, self._prefix + self._latest_postfix + ".json")
+        statistics = tools.read_json(latest_statistics_filename)
+        shadow_is_latest = statistics['shadow']
+        stats_dict['shadow'] = not shadow_is_latest
+
         # -----------------------------------------------------------------------------------------
         # Save
         # -----------------------------------------------------------------------------------------
         save_dict = dict(stats_dict)
         save_dict[self._model_key] = model_and_loss.state_dict()
 
-        latest_checkpoint_filename = os.path.join(
-            directory, self._prefix + self._latest_postfix + self._extension)
-
-        latest_statistics_filename = os.path.join(
-            directory, self._prefix + self._latest_postfix + ".json")
+        if shadow_is_latest:
+            latest_checkpoint_filename = os.path.join(
+                directory, self._prefix + self._latest_postfix + self._extension)
+        else:
+            latest_checkpoint_filename = os.path.join(
+                directory, self._prefix + self._latest_postfix + '_shadow' + self._extension)
 
         torch.save(save_dict, latest_checkpoint_filename)
         tools.write_json(data_dict=stats_dict, filename=latest_statistics_filename)

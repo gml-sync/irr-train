@@ -263,7 +263,7 @@ class TrainingEpoch:
 
                 # Save state each 120 seconds
                 cur_time = time()
-                if cur_time - save_timer > 120:
+                if cur_time - save_timer > 20:
                     save_timer = cur_time
                     if self._checkpoint_saver is not None and self._checkpoint_args is not None:
                         self._checkpoint_saver.save_latest(**self._checkpoint_args)
