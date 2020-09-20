@@ -244,8 +244,9 @@ class CheckpointSaver:
         no_extension = filename.split('.')[0]
         statistics_filename = no_extension + ".json"
         statistics = tools.read_json(statistics_filename)
+        logging.info('JSON: ' + str(statistics))
         shadow_is_latest = statistics['shadow']
-        print('Shadow is latest:', shadow_is_latest)
+        logging.info('Shadow is latest: ' + str(shadow_is_latest))
 
         # -----------------------------------------------------------------------------------------
         # Load checkpoint from file including the state_dict
