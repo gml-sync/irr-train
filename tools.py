@@ -217,7 +217,7 @@ def read_json(filename):
             output_dict = json.loads(''.join(lines), encoding='utf-8')
         except:
             raise ValueError('Could not read %s. %s' % (filename, sys.exc_info()[1]))
-        output_dict = _convert_from_unicode(output_dict)
+        #output_dict = _convert_from_unicode(output_dict)
     return output_dict
 
 
