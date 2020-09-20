@@ -298,8 +298,11 @@ class CheckpointSaver:
         # check previous latest file version
         latest_statistics_filename = os.path.join(
             directory, self._prefix + self._latest_postfix + ".json")
-        statistics = tools.read_json(latest_statistics_filename)
-        shadow_is_latest = statistics['shadow']
+        if os.path.isfile(latest_statistics_filename):
+            statistics = tools.read_json(latest_statistics_filename)
+            shadow_is_latest = statistics['shadow']
+        else:
+            shadow_is_latest = True
         stats_dict['shadow'] = not shadow_is_latest
 
         # -----------------------------------------------------------------------------------------
