@@ -15,7 +15,7 @@ SIZE_OF_BATCH=4
 
 # save path
 TIME=$(date +"%Y%m%d-%H%M%S")
-SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-$TIME"
+SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-Things3D-v1"
 
 # training configuration
 python ../main.py \
