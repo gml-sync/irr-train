@@ -261,7 +261,7 @@ class TrainingEpoch:
 
                 progress.set_postfix(progress_stats)
 
-                # Save state each 120 seconds
+                # Save state each 180 seconds
                 cur_time = time()
                 if cur_time - save_timer > 180:
                     save_timer = cur_time
