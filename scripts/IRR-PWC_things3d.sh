@@ -4,13 +4,13 @@
 EXPERIMENTS_HOME="experiments"
 
 # datasets
-FLYINGTHINGS_HOME=(YOUR PATH)/things3d/FlyingThings3D_subset/
-SINTEL_HOME=(YOUR PATH)/MPI-Sintel-complete/
+FLYINGTHINGS_HOME="$CONDA/datasets/irrpwc/2.Things/FlyingThings3D_subset"
+SINTEL_HOME="$CONDA/datasets/irrpwc/3.Sintel/MPI-Sintel-complete/"
 
 # model and checkpoint
 MODEL=IRR_PWC
 EVAL_LOSS=MultiScaleEPE_PWC_Bi_Occ_upsample
-CHECKPOINT="saved_check_point/IRR-PWC_flyingchairsOcc/checkpoint_latest.ckpt"
+CHECKPOINT="$EXPERIMENTS_HOME/$MODEL-Things3D-v1/checkpoint_latest.ckpt"
 SIZE_OF_BATCH=4
 
 # save path

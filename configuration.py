@@ -276,6 +276,7 @@ class CheckpointSaver:
         checkpoint_stats = {
             key: value for key, value in checkpoint_with_state.items() if key != self._model_key
         }
+        logging.info('STATS ' + str(checkpoint_stats))
 
         return checkpoint_stats, filename
 
@@ -352,6 +353,12 @@ def configure_checkpoint_saver(args, model_and_loss):
                 model_and_loss=model_and_loss,
                 include_params=args.checkpoint_include_params,
                 exclude_params=args.checkpoint_exclude_params)
+
+             # load epoch number
+             no_extension = filename.split('.')[0]
+             statistics_filename = no_extension + ".json"
+             statistics = tools.read_json(statistics_filename)
+             args.start_epoch = statistics['epoch'] + 1
 
         elif os.path.isdir(args.checkpoint):
             if args.checkpoint_mode in ["resume_from_best"]:

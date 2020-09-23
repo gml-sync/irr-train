@@ -1,0 +1,34 @@
+# FlyingChairsOcc
+Read: https://github.com/visinf/irr/tree/master/flyingchairsocc
+Download: https://download.visinf.tu-darmstadt.de/data/flyingchairs_occ/FlyingChairsOcc.tar.gz
+
+FlyingChairsOcc
+-data
+--...
+
+# FlyingThings3D
+Read: https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html
+
+Download DispNet/FlowNet2.0 dataset subsets:
+RGB images (cleanpass) - 35GB torrent
+Optical flow - 364GB torrent
+Flow Occlusions - 889MB direct
+
+FlyingThings3D_subset
+-train
+--flow
+---...
+--flow_occlusions
+---...
+--image_clean
+---...
+-val
+--flow
+---...
+--flow_occlusions
+---...
+--image_clean
+---...
+
+# Sintel
+Download: http://files.is.tue.mpg.de/sintel/MPI-Sintel-complete.zip
