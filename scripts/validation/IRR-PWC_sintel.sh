@@ -9,7 +9,7 @@ SINTEL_HOME="$CONDA/datasets/irrpwc/3.Sintel/MPI-Sintel-complete/"
 # model and checkpoint
 MODEL=IRR_PWC
 #CHECKPOINT="$EXPERIMENTS_HOME/IRR-PWC_sintel/checkpoint_latest.ckpt"
-CHECKPOINT="experiments/$MODEL-Chairs-v1/checkpoint_latest.ckpt"
+CHECKPOINT="experiments/$MODEL-ChairsOcc-v1/checkpoint_latest.ckpt"
 EVAL_LOSS=MultiScaleEPE_PWC_Bi_Occ_upsample_Sintel
 
 SIZE_OF_BATCH=4
