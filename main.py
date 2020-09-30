@@ -38,7 +38,7 @@ def main():
     # Multi-GPU automation
     with logger.LoggingBlock("Multi GPU", emph=True):
         logging.info("Let's use %d GPUs!" % torch.cuda.device_count())
-        #model_and_loss._model = torch.nn.DataParallel(model_and_loss._model)
+        model_and_loss._model = torch.nn.DataParallel(model_and_loss._model)
 
     # Resume from checkpoint if available
     checkpoint_saver, checkpoint_stats = config.configure_checkpoint_saver(args, model_and_loss)
