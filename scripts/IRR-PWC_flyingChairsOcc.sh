@@ -9,13 +9,13 @@ FLYINGCHAIRS_OCC_HOME="$CONDA/datasets/irrpwc/1.Chairs/FlyingChairsOcc/data"
 # model and checkpoint
 MODEL=IRR_PWC
 EVAL_LOSS=MultiScaleEPE_PWC_Bi_Occ_upsample
-CHECKPOINT="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-v1/checkpoint_latest.ckpt"
+CHECKPOINT="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-v2/checkpoint_latest.ckpt"
 #CHECKPOINT=None
 SIZE_OF_BATCH=4
 
 # save path
 TIME=$(date +"%Y%m%d-%H%M%S")
-SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-v1"
+SAVE_PATH="$EXPERIMENTS_HOME/$MODEL-ChairsOcc-v2"
 
 # training configuration
 python ../main.py \

@@ -380,8 +380,7 @@ def configure_checkpoint_saver(args, model_and_loss):
                 logging.info("Unknown checkpoint_restore '%s' given!" % args.checkpoint_restore)
                 quit()
         else:
-            logging.info("Could not find checkpoint file or directory '%s'" % args.checkpoint)
-            quit()
+            logging.info("Could not find checkpoint file or directory '%s'. Starting with random initialization." % args.checkpoint)
 
     return checkpoint_saver, checkpoint_stats
 
